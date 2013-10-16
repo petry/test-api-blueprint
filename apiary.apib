@@ -1,56 +1,55 @@
-HOST: http://api.backstage.globoi.com/
+FORMAT: X-1A
 
---- Nova Api de Conteúdo Petry ---
----
-Com a nova API de conteúdo do backstage, consumir contéudos da globo.com é como tirar doce de criança. Veja abaixo:
----
+# Machines API 
 
---
-Consumo de tipo de conteúdo
-Os recursos abaixos podem ser usados para descobrir e recuperar todos os tipos de conteúdos publicados pela globo.com.
---
-Lista de tipos de conteúdos disponíveis no Backstage
-GET /tipos-de-conteudo
-< 200
-< Content-Type: application/json
-{ "items": [
-{ "url": "/tipos-de-conteudo/1", "tipo":"matéria", "name": "Matérias" },
-{ "url": "/tipos-de-conteudo/2", "tipo":"review", "name": "Reviews" },
-{ "url": "/tipos-de-conteudo/3", "tipo":"nota", "name": "Notas" }
-] }
+The Example API for Dredd API Blueprint testing tool
 
+[![Build Status](https://travis-ci.org/apiaryio/dredd-example.png?branch=master)](https://travis-ci.org/apiaryio/dredd-example)
+# Group Machines
 
-Lista os 10 ultimos conteúdos publicados do tipo especificado.
-GET /tipos-de-conteudo/{materia}
-> Content-Type: application/json
-< 200
-< Content-Type: application/json
-{ "items": [
-  { "id": "123", status": "published", "url": "http://g1.globo.com/cabra-chuta-ovelha"},
-  { "id": "123", status": "published", "url": "http://g1.globo.com/cabra-chuta-ovelha"},
-  { "id": "123", status": "published", "url": "http://g1.globo.com/cabra-chuta-ovelha"},
-  { "id": "123", status": "published", "url": "http://g1.globo.com/cabra-chuta-ovelha"},
-  { "id": "123", status": "published", "url": "http://g1.globo.com/cabra-chuta-ovelha"},
-  { "id": "123", status": "published", "url": "http://g1.globo.com/cabra-chuta-ovelha"},
-  { "id": "123", status": "published", "url": "http://g1.globo.com/cabra-chuta-ovelha"},
-  { "id": "123", status": "published", "url": "http://g1.globo.com/cabra-chuta-ovelha"},
-  { "id": "123", status": "published", "url": "http://g1.globo.com/cabra-chuta-ovelha"},
-  { "id": "123", status": "published", "url": "http://g1.globo.com/cabra-chuta-ovelha"}
-] }
+# Machines collection [/machines]
 
--- Administração de conteúdos --
-Os recursos abaixo permitem a administração de qq tipo de conteúdo no Backstage.
-POST /conteudo/{review}
-{ "titulo": "Text", "published_date": "date_time" }
-< 201
-{ "status": "Created" }
+## Create a Machine [POST]
++ Request (application/json)
 
--- Semantica --
-GET /semantica/?page={1}&per_page={10}
-< 200
-{"items": [{"title": "esportes", "@id": "http://semantica.globo.com/esportes/", "resource_id": "esportes"}, {"title": "glb", "@id": "http://semantica.globo.com/", "resource_id": "glb"}, {"title": "g1", "@id": "http://semantica.globo.com/G1/", "resource_id": "g1"}, {"title": "ego", "@id": "http://semantica.globo.com/ego/", "resource_id": "ego"}, {"title": "tvg", "@id": "http://semantica.globo.com/tvg/", "resource_id": "tvg"}, {"title": "upper", "@id": "http://semantica.globo.com/upper/", "resource_id": "upper"}, {"title": "person", "@id": "http://semantica.globo.com/person/", "resource_id": "person"}, {"title": "place", "@id": "http://semantica.globo.com/place/", "resource_id": "place"}, {"title": "eureka", "@id": "http://semantica.globo.com/eureka/", "resource_id": "eureka"}, {"title": "organization", "@id": "http://semantica.globo.com/organization/", "resource_id": "organization"}], "_first_args": "page=1", "_base_url": "http://brainiak.semantica.dev.globoi.com", "_next_args": "page=2"}
+        {
+          "type": "bulldozer",
+          "name": "willy"
+        }
+
++ Response 202 (application/json)
+        
+        {
+          "message": "Accepted"
+        }
+
+## Retreive all Machines [GET]
+
++ Response 200 (application/json)
+
+        [{
+            "_id": "52341870ed55224b15ff07ef",
+            "type": "bulldozer",
+            "name": "willy"
+        }]
+
+# Machine [/machines/{name}]
++ Parameters
+  + name (required,`willy`)
 
 
+## Retrieve a Machine [GET]
++ Response 200 (application/json)
+
+        {
+          "type": "bulldozer",
+          "name": "willy",
+          "_id": "5229c6e8e4b0bd7dbb07e29c"
+        }
+
+## Delete Message [DELETE]
+
++ Response 204
 
 
 
